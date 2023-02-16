@@ -83,6 +83,7 @@ const App = ({ signOut }) => {
   return (
     <View className="App">
       <Heading level={1}>Sabrina Pet Detectives</Heading>
+      <Heading level={2}>Please key in the details of the pet that is found or lost</Heading>
       <View as="form" margin="3rem 0" onSubmit={createNote}>
         <Flex direction="row" justifyContent="center">
           <Select
@@ -152,7 +153,7 @@ const App = ({ signOut }) => {
               />
             )}
             <Button variation="link" onClick={() => deleteNote(note)}>
-              Delete note
+              Delete
             </Button>
           </Flex>
         ))}
