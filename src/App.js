@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
+import Select from "react-select";
 import "@aws-amplify/ui-react/styles.css";
 import { API, Storage } from 'aws-amplify';
 import {
@@ -20,10 +21,19 @@ import {
 
 const App = ({ signOut }) => {
   const [notes, setNotes] = useState([]);
+  const [selectedOptions, setSelectedOptions] = useState();
+  const optionList = [
+    { value: "found", label: "Found" },
+    { value: "lost", label: "Lost" }
+  ];
 
   useEffect(() => {
     fetchNotes();
   }, []);
+
+  function handleSelect(data) {
+    setSelectedOptions(data);
+  }
 
   async function fetchNotes() {
     const apiData = await API.graphql({ query: listNotes });
@@ -45,9 +55,11 @@ const App = ({ signOut }) => {
     const form = new FormData(event.target);
     const image = form.get("image");
     const data = {
+      category: form.get("category"),
       name: form.get("name"),
       description: form.get("description"),
-      image: image.name,
+      contact: form.get("contact"),
+      image: image.name
     };
     if (!!data.image) await Storage.put(data.name, image);
     await API.graphql({
@@ -70,21 +82,36 @@ const App = ({ signOut }) => {
 
   return (
     <View className="App">
-      <Heading level={1}>My Notes App</Heading>
+      <Heading level={1}>Sabrina Pet Detectives</Heading>
       <View as="form" margin="3rem 0" onSubmit={createNote}>
         <Flex direction="row" justifyContent="center">
+          <Select
+            name = "category"
+            options={optionList}
+            placeholder="Lost or Found"
+            value={selectedOptions}
+            onChange={handleSelect}
+          />
           <TextField
             name="name"
-            placeholder="Note Name"
-            label="Note Name"
+            placeholder="Pet Name"
+            label="Pet Name"
             labelHidden
             variation="quiet"
             required
           />
           <TextField
             name="description"
-            placeholder="Note Description"
-            label="Note Description"
+            placeholder="Pet Description"
+            label="Pet Description"
+            labelHidden
+            variation="quiet"
+            required
+          />
+          <TextField
+            name="contact"
+            placeholder="Email to respond"
+            label="Email to respond"
             labelHidden
             variation="quiet"
             required
@@ -110,9 +137,13 @@ const App = ({ signOut }) => {
             alignItems="center"
           >
             <Text as="strong" fontWeight={700}>
+              {note.category}
+            </Text>
+            <Text>
               {note.name}
             </Text>
             <Text as="span">{note.description}</Text>
+            <Text as="span">{note.contact}</Text>
             {note.image && (
               <Image
                 src={note.image}

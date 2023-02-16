@@ -1,5 +1,11 @@
 {
   "AppSyncApiName": "sabpetapp",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
-  "DynamoDBEnableServerSideEncryption": false
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authsabpetapp327948d5",
+      "Outputs.UserPoolId"
+    ]
+  }
 }

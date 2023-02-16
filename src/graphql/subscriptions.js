@@ -5,8 +5,10 @@ export const onCreateNote = /* GraphQL */ `
   subscription OnCreateNote($filter: ModelSubscriptionNoteFilterInput) {
     onCreateNote(filter: $filter) {
       id
+      category
       name
       description
+      contact
       image
       createdAt
       updatedAt
@@ -17,8 +19,10 @@ export const onUpdateNote = /* GraphQL */ `
   subscription OnUpdateNote($filter: ModelSubscriptionNoteFilterInput) {
     onUpdateNote(filter: $filter) {
       id
+      category
       name
       description
+      contact
       image
       createdAt
       updatedAt
@@ -29,8 +33,10 @@ export const onDeleteNote = /* GraphQL */ `
   subscription OnDeleteNote($filter: ModelSubscriptionNoteFilterInput) {
     onDeleteNote(filter: $filter) {
       id
+      category
       name
       description
+      contact
       image
       createdAt
       updatedAt
