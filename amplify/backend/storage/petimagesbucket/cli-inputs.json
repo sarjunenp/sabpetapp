@@ -1,0 +1,14 @@
+{
+  "resourceName": "petimagesbucket",
+  "policyUUID": "7addcc99",
+  "bucketName": "sabpetapp88582c4367484fabbf6e53164c9dacfa",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE",
+    "READ",
+    "DELETE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}
