@@ -85,7 +85,7 @@ const App = ({ signOut }) => {
   return (
     <View className="App">
       <div>
-         <img style={{ width: 500, height: 600 }} src={Picture} alt="React Logo" />
+         <img style={{ width: 600, height: 300 }} src={Picture} alt="React Logo" />
       </div>
       <Heading level={1}>Sabrina Pet Detectives</Heading>
       <Heading level={2}>Please key in the details of the pet that is found or lost</Heading>
