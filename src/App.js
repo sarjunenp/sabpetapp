@@ -144,7 +144,6 @@ const App = ({ signOut }) => {
               {note.name}
             </Text>
             <Text as="span">{note.description}</Text>
-            <Text as="span">{note.contact}</Text>
             {note.image && (
               <Image
                 src={note.image}
