@@ -18,6 +18,8 @@ import {
   createNote as createNoteMutation,
   deleteNote as deleteNoteMutation,
 } from "./graphql/mutations";
+import Picture from './images/family1_R.jpg';
+import Picture2 from './images/family2_R.jpg';
 
 const App = ({ signOut }) => {
   const [notes, setNotes] = useState([]);
@@ -82,6 +84,9 @@ const App = ({ signOut }) => {
 
   return (
     <View className="App">
+      <div>
+         <img style={{ width: 500, height: 600 }} src={Picture} alt="React Logo" />
+      </div>
       <Heading level={1}>Sabrina Pet Detectives</Heading>
       <Heading level={2}>Please key in the details of the pet that is found or lost</Heading>
       <View as="form" margin="3rem 0" onSubmit={createNote}>
