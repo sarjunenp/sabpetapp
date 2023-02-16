@@ -16,10 +16,10 @@ import {
 import { listNotes } from "./graphql/queries";
 import {
   createNote as createNoteMutation,
-  deleteNote as deleteNoteMutation,
+  // deleteNote as deleteNoteMutation,
 } from "./graphql/mutations";
 import Picture from './images/family1_R.jpg';
-import Picture2 from './images/family2_R.jpg';
+// import Picture2 from './images/family2_R.jpg';
 
 const App = ({ signOut }) => {
   const [notes, setNotes] = useState([]);
@@ -72,15 +72,15 @@ const App = ({ signOut }) => {
     event.target.reset();
   }
 
-  async function deleteNote({ id, name }) {
-    const newNotes = notes.filter((note) => note.id !== id);
-    setNotes(newNotes);
-    await Storage.remove(name);
-    await API.graphql({
-      query: deleteNoteMutation,
-      variables: { input: { id } },
-    });
-  }
+  // async function deleteNote({ id, name }) {
+  //   const newNotes = notes.filter((note) => note.id !== id);
+  //   setNotes(newNotes);
+  //   await Storage.remove(name);
+  //   await API.graphql({
+  //     query: deleteNoteMutation,
+  //     variables: { input: { id } },
+  //   });
+  // }
 
   return (
     <View className="App">
