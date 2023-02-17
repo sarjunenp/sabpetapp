@@ -97,6 +97,7 @@ const App = ({ signOut }) => {
             placeholder="Lost or Found"
             value={selectedOptions}
             onChange={handleSelect}
+            required
           />
           <TextField
             name="name"
