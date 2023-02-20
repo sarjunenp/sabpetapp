@@ -16,7 +16,7 @@ import {
 import { listNotes } from "./graphql/queries";
 import {
   createNote as createNoteMutation,
-  // deleteNote as deleteNoteMutation,
+  deleteNote as deleteNoteMutation,
 } from "./graphql/mutations";
 import Picture from './images/family1_R.jpg';
 // import Picture2 from './images/family2_R.jpg';
@@ -43,7 +43,7 @@ const App = ({ signOut }) => {
     await Promise.all(
       notesFromAPI.map(async (note) => {
         if (note.image) {
-          const url = await Storage.get(note.name);
+          const url = await Storage.get(note.fullname);
           note.image = url;
         }
         return note;
@@ -56,12 +56,17 @@ const App = ({ signOut }) => {
     event.preventDefault();
     const form = new FormData(event.target);
     const image = form.get("image");
+    var today = new Date();
+    date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate() + ' ' + today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds()
+    const nameOne = form.get("name")
+    var newName = nameOne + '-' + date
     const data = {
       category: form.get("category"),
       name: form.get("name"),
       description: form.get("description"),
       contact: form.get("contact"),
-      image: image.name
+      image: image.name,
+      fullname: newName
     };
     if (!!data.image) await Storage.put(data.name, image);
     await API.graphql({
@@ -72,15 +77,15 @@ const App = ({ signOut }) => {
     event.target.reset();
   }
 
-  // async function deleteNote({ id, name }) {
-  //   const newNotes = notes.filter((note) => note.id !== id);
-  //   setNotes(newNotes);
-  //   await Storage.remove(name);
-  //   await API.graphql({
-  //     query: deleteNoteMutation,
-  //     variables: { input: { id } },
-  //   });
-  // }
+  async function deleteNote({ id, name }) {
+    const newNotes = notes.filter((note) => note.id !== id);
+    setNotes(newNotes);
+    await Storage.remove(name);
+    await API.graphql({
+      query: deleteNoteMutation,
+      variables: { input: { id } },
+    });
+  }
 
   return (
     <View className="App">
@@ -157,9 +162,9 @@ const App = ({ signOut }) => {
                 style={{ width: 400 }}
               />
             )}
-            {/* <Button variation="link" onClick={() => deleteNote(note)}>
+            <Button variation="link" onClick={() => deleteNote(note)}>
               Delete
-            </Button> */}
+            </Button>
           </Flex>
         ))}
       </View>
