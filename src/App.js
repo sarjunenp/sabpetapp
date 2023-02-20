@@ -43,7 +43,7 @@ const App = ({ signOut }) => {
     await Promise.all(
       notesFromAPI.map(async (note) => {
         if (note.image) {
-          const url = await Storage.get(note.fullname);
+          const url = await Storage.get(note.name);
           note.image = url;
         }
         return note;
