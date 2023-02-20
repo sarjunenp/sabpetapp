@@ -43,7 +43,7 @@ const App = ({ signOut }) => {
     await Promise.all(
       notesFromAPI.map(async (note) => {
         if (note.image) {
-          const url = await Storage.get(note.name);
+          const url = await Storage.get(note.fullname);
           note.image = url;
         }
         return note;
@@ -68,7 +68,7 @@ const App = ({ signOut }) => {
       image: image.name,
       fullname: newName
     };
-    if (!!data.image) await Storage.put(data.name, image);
+    if (!!data.image) await Storage.put(data.fullname, image);
     await API.graphql({
       query: createNoteMutation,
       variables: { input: data },
@@ -77,10 +77,10 @@ const App = ({ signOut }) => {
     event.target.reset();
   }
 
-  async function deleteNote({ id, name }) {
+  async function deleteNote({ id, fullname }) {
     const newNotes = notes.filter((note) => note.id !== id);
     setNotes(newNotes);
-    await Storage.remove(name);
+    await Storage.remove(fullname);
     await API.graphql({
       query: deleteNoteMutation,
       variables: { input: { id } },
