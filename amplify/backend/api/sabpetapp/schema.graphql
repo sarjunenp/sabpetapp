@@ -9,4 +9,5 @@ type Note @model @auth(rules: [ { allow: public } ] ){
   description: String
   contact: String
   image: String
+  fullname: String
 }

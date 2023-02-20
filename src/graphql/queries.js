@@ -10,6 +10,7 @@ export const getNote = /* GraphQL */ `
       description
       contact
       image
+      fullname
       createdAt
       updatedAt
     }
@@ -29,6 +30,7 @@ export const listNotes = /* GraphQL */ `
         description
         contact
         image
+        fullname
         createdAt
         updatedAt
       }

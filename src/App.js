@@ -57,7 +57,7 @@ const App = ({ signOut }) => {
     const form = new FormData(event.target);
     const image = form.get("image");
     var today = new Date();
-    const date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate() + ' ' + today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds()
+    const date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate() + '-' + today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds()
     const nameOne = form.get("name")
     var newName = nameOne + '-' + date
     const data = {

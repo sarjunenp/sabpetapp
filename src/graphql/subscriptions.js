@@ -10,6 +10,7 @@ export const onCreateNote = /* GraphQL */ `
       description
       contact
       image
+      fullname
       createdAt
       updatedAt
     }
@@ -24,6 +25,7 @@ export const onUpdateNote = /* GraphQL */ `
       description
       contact
       image
+      fullname
       createdAt
       updatedAt
     }
@@ -38,6 +40,7 @@ export const onDeleteNote = /* GraphQL */ `
       description
       contact
       image
+      fullname
       createdAt
       updatedAt
     }
