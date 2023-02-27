@@ -122,8 +122,8 @@ const App = ({ signOut }) => {
           />
           <TextField
             name="contact"
-            placeholder="Email to respond"
-            label="Email to respond"
+            placeholder="Email to reply"
+            label="Email to reply"
             labelHidden
             variation="quiet"
             required
