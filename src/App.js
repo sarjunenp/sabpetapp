@@ -135,7 +135,7 @@ const App = ({ signOut }) => {
             style={{ alignSelf: "end" }}
           />
           <Button type="submit" variation="primary">
-            Create Note
+            Create Incident
           </Button>
         </Flex>
       </View>
