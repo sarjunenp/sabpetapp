@@ -18,8 +18,8 @@ import {
   createNote as createNoteMutation,
   // deleteNote as deleteNoteMutation,
 } from "./graphql/mutations";
-import Picture from './images/family1_R.jpg';
-// import Picture2 from './images/family2_R.jpg';
+import Picture from './images/1-Slide-1.jpg';
+// import Picture2 from './images/1-Slide-1.png';
 
 const App = ({ signOut }) => {
   const [notes, setNotes] = useState([]);
